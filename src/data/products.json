@@ -1,0 +1,30 @@
+[
+  { "id":1,
+    "imageUrl": "https://cdn.petbarn.com.au/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/2/123110_1_n_animates-cushion-slicker-cat-brush_1.jpg",
+    "name": "Kattborste",
+    "description": "En borste som håller smutsen och tovorna borta från din katts päls vid regelbunden användning. Tar även bort lösa hår.",
+    "stock": 10,
+    "price": 199
+  },
+  {  "id":2,
+    "imageUrl": "https://media.petsathome.com/wcsstore/pah-cas01/300/27175.jpg",
+    "name": "Royal Canin Sterilised 37 10 kg (kattmat)",
+    "description": "Ett noga kontrollerat kaloriintag med mindre fett som ger energi och färre stärkelserika kolhydrater (som stimulerar födointaget). Ett tillskott av L-karnitin (100 mg/kg) bidrar till att fettdepåerna används som energikälla.",
+    "stock": 5,
+    "price": 250
+  },
+    {"id":3,
+    "imageUrl": "https://www.doggie.se/media/catalog/product/cache/1/image/940x940/9df78eab33525d08d6e5fb8d27136e95/_/2/_2_pa-sw020_h_2008-08-04bigiv-s.jpg",
+    "name": "Puppy Angel tröja",
+    "description": "Varm och skön stickad hundtröja",
+    "stock": 140,
+    "price": 250
+  },
+  {  "id":13,
+    "imageUrl": "https://www.doggie.se/media/catalog/product/cache/1/image/940x940/9df78eab33525d08d6e5fb8d27136e95/d/t/dt150_alt4.jpg",
+    "name": "Hårband",
+    "description": "Hårbandet är ca 4 cm brett med gummisnodd för enkel fastsättning.",
+    "stock": 1,
+    "price": 20
+  }
+]
