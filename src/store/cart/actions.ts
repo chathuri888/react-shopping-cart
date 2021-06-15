@@ -1,5 +1,5 @@
 import { Cart } from "../../entities/Cart";
-import { Product } from "../../entities/Product";
+import { Product, ProductRange } from "../../entities/Product";
 import { CartActionTypes } from "./types";
 import {
   ADD_PRODUCT,
@@ -8,6 +8,9 @@ import {
   CALCULATE_CART_SUCCESS,
   REMOVE_PRODUCT,
   RESET_CART_DATA,
+  FETCH_PRODUCTS_DATA,
+  FETCH_PRODUCTS_DATA_SUCCESS,
+  PRICE_RANGE_CHANGE,
 } from "../../constants/cart";
 
 export function addProduct(
@@ -51,5 +54,25 @@ export function calculateCartFailure(message: string): CartActionTypes {
 export function resetCartData() {
   return {
     type: RESET_CART_DATA,
+  };
+}
+
+export function fetchProducts() {
+  return {
+    type: FETCH_PRODUCTS_DATA,
+  };
+}
+
+export function fetchProductsSucces(products: Product[]) {
+  return {
+    type: FETCH_PRODUCTS_DATA_SUCCESS,
+    products,
+  };
+}
+
+export function changePriceRange(priceRange: ProductRange) {
+  return {
+    type: PRICE_RANGE_CHANGE,
+    priceRange,
   };
 }

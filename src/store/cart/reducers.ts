@@ -8,7 +8,15 @@ import {
   CALCULATE_CART_SUCCESS,
   REMOVE_PRODUCT,
   RESET_CART_DATA,
+  PRICE_RANGE_CHANGE,
+  FETCH_PRODUCTS_DATA_SUCCESS,
 } from "../../constants/cart";
+
+const PRODUCT_RANGE = [
+  { id: 1, minPrice: 0, maxPrice: 100 },
+  { id: 2, minPrice: 100, maxPrice: 200 },
+  { id: 3, minPrice: 201, maxPrice: 300 },
+];
 
 const initialState: CartState = {
   error: false,
@@ -18,9 +26,12 @@ const initialState: CartState = {
   shipping: 0,
   total: 0,
   totalQuantity: 0,
+  products: [],
+  productRange: PRODUCT_RANGE,
 };
 
-const resetCart = () => ({
+const resetCart = (state: CartState) => ({
+  ...state,
   error: false,
   loading: false,
   items: [],
@@ -81,8 +92,22 @@ export function cartReducer(
         total: action.cart.total,
         totalQuantity: action.cart.totalQuantity,
       };
+    case FETCH_PRODUCTS_DATA_SUCCESS:
+      return { ...state, products: action.products };
     case RESET_CART_DATA:
-      return resetCart();
+      return resetCart(state);
+    case PRICE_RANGE_CHANGE:
+      return produce(state, (draftState) => {
+        const foundItem = draftState.productRange.find(
+          (item) => item.id === action.priceRange.id
+        );
+        if (foundItem) {
+          foundItem.id = action.priceRange.id;
+          foundItem.minPrice = action.priceRange.minPrice;
+          foundItem.maxPrice = action.priceRange.maxPrice;
+        }
+      });
+
     default:
       return state;
   }

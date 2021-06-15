@@ -1,23 +1,32 @@
-import React, { useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import LinkButton from '../../components/LinkButton';
-import formatCurrency from '../../helpers/formatCurrency';
-import { calculateCart } from '../../store/cart/actions';
-import { RootState } from '../../store/rootReducer';
-import CartItem from './CartItem';
-import { Button, Loading, Table, Updating, Container } from './styles';
+import LinkButton from "../../components/LinkButton";
+import formatCurrency from "../../helpers/formatCurrency";
+import { calculateCart } from "../../store/cart/actions";
+import { RootState } from "../../store/rootReducer";
+import CartItem from "./CartItem";
+import { Button, Loading, Table, Updating, Container } from "./styles";
 
 const Cart: React.FC = () => {
   const cart = useSelector((state: RootState) => state.cart);
 
   const dispatch = useDispatch();
 
-  const formattedSubtotal = useMemo(() => formatCurrency(cart.subtotal), [cart.subtotal]);
+  const formattedSubtotal = useMemo(
+    () => formatCurrency(cart.subtotal),
+    [cart.subtotal]
+  );
 
-  const formattedShipping = useMemo(() => formatCurrency(cart.shipping), [cart.shipping]);
+  const formattedShipping = useMemo(
+    () => formatCurrency(cart.shipping),
+    [cart.shipping]
+  );
 
-  const formattedTotal = useMemo(() => formatCurrency(cart.total), [cart.total]);
+  const formattedTotal = useMemo(
+    () => formatCurrency(cart.total),
+    [cart.total]
+  );
 
   return (
     <Container>
@@ -32,7 +41,9 @@ const Cart: React.FC = () => {
         </thead>
         <tbody>
           {cart.items.length ? (
-            cart.items.map((item) => <CartItem key={item.product.id} item={item} />)
+            cart.items.map((item) => (
+              <CartItem key={item.product.id} item={item} />
+            ))
           ) : (
             <tr>
               <td colSpan={4}>Your cart is empty</td>
@@ -44,23 +55,31 @@ const Cart: React.FC = () => {
             <th colSpan={3} scope="row">
               Subtotal
             </th>
-            <td className="price">{cart.loading ? <Loading /> : formattedSubtotal}</td>
+            <td className="price">
+              {cart.loading ? <Loading /> : formattedSubtotal}
+            </td>
           </tr>
           <tr>
             <th colSpan={3} scope="row">
               Shipping
             </th>
-            <td className="price">{cart.loading ? <Loading /> : formattedShipping}</td>
+            <td className="price">
+              {cart.loading ? <Loading /> : formattedShipping}
+            </td>
           </tr>
           <tr>
             <th colSpan={3} scope="row">
               Total
             </th>
-            <td className="price">{cart.loading ? <Loading /> : formattedTotal}</td>
+            <td className="price">
+              {cart.loading ? <Loading /> : formattedTotal}
+            </td>
           </tr>
           <tr>
             <th colSpan={4} scope="row">
-              <Button onClick={() => dispatch(calculateCart())}>Calculate totals</Button>
+              <Button onClick={() => dispatch(calculateCart())}>
+                Calculate totals
+              </Button>
 
               {cart.loading && <Updating>Updating...</Updating>}
             </th>

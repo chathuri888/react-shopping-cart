@@ -7,4 +7,11 @@ export interface Product {
   stock: number;
   isOpen?: boolean;
   onClick?: Function;
+  totalPrice: number;
+}
+
+export interface ProductRange {
+  id: number;
+  minPrice: number;
+  maxPrice: number;
 }

@@ -6,6 +6,7 @@ import {
   calculateCart as actionCalculateCart,
   calculateCartFailure,
   calculateCartSuccess,
+  fetchProductsSucces,
 } from "./actions";
 import {
   AddProductAction,
@@ -16,7 +17,10 @@ import {
   ADD_PRODUCT,
   CALCULATE_CART,
   REMOVE_PRODUCT,
+  FETCH_PRODUCTS_DATA,
 } from "../../constants/cart";
+import axios from "axios";
+import { normalizePRoducts } from "../../library/Normalize";
 
 function* calculateCartAction(action: CalculateCartAction): any {
   try {
@@ -44,8 +48,20 @@ function* removeProduct(action: RemoveProductAction): any {
   yield put(actionCalculateCart());
 }
 
+function* fetchProductAction(): any {
+  const apiCall = () => axios.get("http://cat-store-api.frostdigital.se/api");
+  try {
+    const { data } = yield call(apiCall);
+    const formateData = normalizePRoducts(data.products);
+    yield put(fetchProductsSucces(formateData));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default all([
   takeLatest(CALCULATE_CART, calculateCartAction),
   takeLatest(ADD_PRODUCT, addProduct),
   takeLatest(REMOVE_PRODUCT, removeProduct),
+  takeLatest(FETCH_PRODUCTS_DATA, fetchProductAction),
 ]);

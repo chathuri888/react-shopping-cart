@@ -1,39 +1,48 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Product as ProductModel } from '../../entities/Product'
-import getProducts from '../../services/getProducts'
-import { RootState } from '../../store/rootReducer'
+import { Product as ProductModel } from "../../entities/Product";
+import { RootState } from "../../store/rootReducer";
 
-import Product from '../Product'
-import { Container, Loading } from './styles'
+import Product from "../Product";
+import { Container, Loading, ContainerProduct } from "./styles";
+import { fetchProducts } from "../../store/cart/actions";
+import SummeryTable from "../productsSummery";
 
 const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<ProductModel[]>([])
-  const [loading, setLoading] = useState<boolean>(false)
-  const {items} = useSelector((state: RootState) => state.cart)
-  
+  const dispatch = useDispatch();
+  const { products } = useSelector((state: RootState) => state.cart);
+  const [productsList, setProducts] = useState<ProductModel[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const { items } = useSelector((state: RootState) => state.cart);
 
   useEffect(() => {
-    ;(async () => {
-      setLoading(true)
-      const data = await getProducts()
-      setProducts(data)
-      setLoading(false)
-    })()
-  }, [setProducts])
+    dispatch(fetchProducts());
+    setLoading(true);
+    setProducts(products);
+    setLoading(false);
+  }, [productsList]);
 
   return (
     <Container>
       {loading ? (
         <Loading>Loading...</Loading>
       ) : (
-        products?.map((product) => (
-          <Product key={product.id} product={product} selectedItems={items} />
-        ))
+        <>
+          <SummeryTable productsList={products} />
+          <ContainerProduct>
+            {products?.map((product) => (
+              <Product
+                key={product.id}
+                product={product}
+                selectedItems={items}
+              />
+            ))}
+          </ContainerProduct>
+        </>
       )}
     </Container>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;

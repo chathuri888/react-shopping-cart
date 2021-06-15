@@ -1,10 +1,9 @@
-import { ModalProvider } from 'styled-react-modal';
+import { ModalProvider } from "styled-react-modal";
 
-import { Container, Image, Discription, StyledModal } from './styles';
-import { Product } from '../../entities/Product';
-import Button from '../Button';
-import TextArea from '../TextArea';
-
+import { Container, Image, Discription, StyledModal } from "./styles";
+import { Product } from "../../entities/Product";
+import Button from "../Button";
+import TextArea from "../TextArea";
 
 interface OwnProps {
   onClick: Function;
@@ -30,9 +29,10 @@ const ModalRNC = ({
       <StyledModal
         isOpen={isOpen}
         onBackgroundClick={() => onClick()}
-        onEscapeKeydown={() => onClick()}>
+        onEscapeKeydown={() => onClick()}
+      >
         <Container>
-          <Image src={srcImg} title={product?.name} />
+          <Image src={srcImg} alt={product?.name} />
           <TextArea lable={product?.name} />
           <TextArea lable={formattedPrice} />
           <Discription>{product?.description}</Discription>

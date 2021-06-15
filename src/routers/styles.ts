@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   background: #fabf37;
@@ -10,8 +10,8 @@ export const Container = styled.div`
 export const Image = styled.img`
   display: block;
   margin: 0 auto -5px auto;
-  width: 50px;
-  height: 50px;
+  width: 338px;
+  height: 264px;
 `;
 
 export const Button = styled.button`
@@ -19,7 +19,7 @@ export const Button = styled.button`
   text-transform: uppercase;
   font-weight: 300;
   border-radius: 20px;
-  background-color: ${(props) => (props.color ? props.color : '#2c0440')};
+  background-color: ${(props) => (props.color ? props.color : "#2c0440")};
   border: 1px solid #2c0440;
   color: #fff;
   margin: -5px auto;
