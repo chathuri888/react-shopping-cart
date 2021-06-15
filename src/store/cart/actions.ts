@@ -1,16 +1,19 @@
-import { Cart } from '../../entities/Cart';
-import { Product } from '../../entities/Product';
+import { Cart } from "../../entities/Cart";
+import { Product } from "../../entities/Product";
+import { CartActionTypes } from "./types";
 import {
   ADD_PRODUCT,
   CALCULATE_CART,
   CALCULATE_CART_FAILURE,
   CALCULATE_CART_SUCCESS,
-  CartActionTypes,
   REMOVE_PRODUCT,
   RESET_CART_DATA,
-} from './types';
+} from "../../constants/cart";
 
-export function addProduct(product: Product, quantity: number): CartActionTypes {
+export function addProduct(
+  product: Product,
+  quantity: number
+): CartActionTypes {
   return {
     type: ADD_PRODUCT,
     product,

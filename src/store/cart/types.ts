@@ -1,12 +1,13 @@
-import { Cart } from '../../entities/Cart';
-import { Product } from '../../entities/Product';
-
-export const ADD_PRODUCT = 'ADD_PRODUCT';
-export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
-export const CALCULATE_CART = 'CALCULATE_CART';
-export const CALCULATE_CART_SUCCESS = 'CALCULATE_CART_SUCCESS';
-export const CALCULATE_CART_FAILURE = 'CALCULATE_CART_FAILURE';
-export const RESET_CART_DATA = 'RESET_CART_DATA';
+import { Cart } from "../../entities/Cart";
+import { Product } from "../../entities/Product";
+import {
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  CALCULATE_CART,
+  RESET_CART_DATA,
+  CALCULATE_CART_SUCCESS,
+  CALCULATE_CART_FAILURE,
+} from "../../constants/cart";
 
 export interface AddProductAction {
   type: typeof ADD_PRODUCT;
