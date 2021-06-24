@@ -8,10 +8,14 @@ import Product from "../Product";
 import { Container, Loading, ContainerProduct } from "./styles";
 import { fetchProducts } from "../../store/cart/actions";
 import SummeryTable from "../productsSummery";
+import ModalCart from "../../components/ShoppingCartModal";
+import { setOpenShoppingCart } from "../../store/cart/actions";
 
 const ProductList: React.FC = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state: RootState) => state.cart);
+  const { products, isShoppingCartOpen } = useSelector(
+    (state: RootState) => state.cart
+  );
   const [productsList, setProducts] = useState<ProductModel[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { items } = useSelector((state: RootState) => state.cart);
@@ -41,6 +45,10 @@ const ProductList: React.FC = () => {
           </ContainerProduct>
         </>
       )}
+      <ModalCart
+        isOpen={isShoppingCartOpen}
+        onClick={() => dispatch(setOpenShoppingCart(!isShoppingCartOpen))}
+      />
     </Container>
   );
 };

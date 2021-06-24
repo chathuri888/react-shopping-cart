@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { useDispatch } from "react-redux";
 
 import Button from "../../components/Button";
-import Modal from "../../components/Modal";
+import ModalProduct from "../../components/ProductListModal";
 import TextArea from "../../components/TextArea";
 import { Product as ProductModel } from "../../entities/Product";
 import { normalizeItem } from "../../library/Normalize";
@@ -59,7 +59,7 @@ const Product: React.FC<ProductProps> = ({ product, selectedItems }) => {
 
   return (
     <Container>
-      <Modal
+      <ModalProduct
         isOpen={isOpen}
         onClick={() => setIsOpen(!isOpen)}
         product={product}
@@ -89,7 +89,7 @@ const Product: React.FC<ProductProps> = ({ product, selectedItems }) => {
 
       <Button onPress={() => setIsOpen(!isOpen)} lable="View" />
       {!addCardItem ? (
-        <TextArea lable="No item" />
+        <TextArea color="#e20c16" lable="No item" />
       ) : (
         <>
           {!addCartButtonShow ? (

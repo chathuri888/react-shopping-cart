@@ -10,6 +10,7 @@ import {
   RESET_CART_DATA,
   PRICE_RANGE_CHANGE,
   FETCH_PRODUCTS_DATA_SUCCESS,
+  SET_SHOPPING_CART_OPEN,
 } from "../../constants/cart";
 
 const PRODUCT_RANGE = [
@@ -28,6 +29,7 @@ const initialState: CartState = {
   totalQuantity: 0,
   products: [],
   productRange: PRODUCT_RANGE,
+  isShoppingCartOpen: false,
 };
 
 const resetCart = (state: CartState) => ({
@@ -107,7 +109,8 @@ export function cartReducer(
           foundItem.maxPrice = action.priceRange.maxPrice;
         }
       });
-
+    case SET_SHOPPING_CART_OPEN:
+      return { ...state, isShoppingCartOpen: action.openCart };
     default:
       return state;
   }
