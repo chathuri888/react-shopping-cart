@@ -19,8 +19,7 @@ import {
   REMOVE_PRODUCT,
   FETCH_PRODUCTS_DATA,
 } from "../../constants/cart";
-import axios from "axios";
-import { normalizePRoducts } from "../../library/Normalize";
+import getProducts from "../../services/getProducts";
 
 function* calculateCartAction(action: CalculateCartAction): any {
   try {
@@ -49,11 +48,9 @@ function* removeProduct(action: RemoveProductAction): any {
 }
 
 function* fetchProductAction(): any {
-  const apiCall = () => axios.get("http://cat-store-api.frostdigital.se/api");
   try {
-    const { data } = yield call(apiCall);
-    const formateData = normalizePRoducts(data.products);
-    yield put(fetchProductsSucces(formateData));
+    const productList = yield call(getProducts);
+    yield put(fetchProductsSucces(productList));
   } catch (error) {
     console.log(error);
   }
