@@ -7,16 +7,11 @@ export const normalizeItem = (value: CartStateItem[], productId: number) => {
   return quantity?.quantity || 0;
 };
 
-export const normalizePRoducts = (value: any) => {
-  const products = value.map(
-    (
-      x: { totalPrice: number; price: number; stock: number; id: any },
-      i: number
-    ) => {
-      x.totalPrice = x.price * x.stock;
-      x.id = i + 1;
-      return x;
-    }
-  );
+export const normalizePRoducts = (value: Product[]) => {
+  const products = value.map((x, i) => {
+    x.totalPrice = x.price * x.stock;
+    x.id = i + 1;
+    return x;
+  });
   return products;
 };

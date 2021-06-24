@@ -1,10 +1,10 @@
-import React, { useCallback, useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useCallback, useMemo } from "react";
+import { useDispatch } from "react-redux";
 
-import formatCurrency from '../../../helpers/formatCurrency';
-import { addProduct, removeProduct } from '../../../store/cart/actions';
-import { CartStateItem } from '../../../store/cart/types';
-import { ActionButton, Quantity } from './styles';
+import formatCurrency from "../../helpers/formatCurrency";
+import { addProduct, removeProduct } from "../../store/cart/actions";
+import { CartStateItem } from "../../store/cart/types";
+import { ActionButton, Quantity } from "./styles";
 
 interface CartItem {
   item: CartStateItem;
@@ -13,8 +13,15 @@ interface CartItem {
 const CartItem: React.FC<CartItem> = ({ item }) => {
   const dispatch = useDispatch();
 
-  const formattedPrice = useMemo(() => formatCurrency(item.product.price), [item.product.price]);
-  const formattedLineTotal = useMemo(() => formatCurrency(item.lineTotal), [item.lineTotal]);
+  const formattedPrice = useMemo(
+    () => formatCurrency(item.product.price),
+    [item.product.price]
+  );
+
+  const formattedLineTotal = useMemo(
+    () => formatCurrency(item.lineTotal),
+    [item.lineTotal]
+  );
 
   const handleIncrease = useCallback(() => {
     if (item.quantity < item.product.stock) {

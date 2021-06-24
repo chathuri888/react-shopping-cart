@@ -1,8 +1,8 @@
-import { Button } from './styles';
+import { Button } from "./styles";
 
 interface OwnProps {
   onPress: Function;
-  lable?: string;
+  lable?: any;
   color?: string;
 }
 

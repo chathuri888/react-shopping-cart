@@ -10,6 +10,7 @@ import {
   FETCH_PRODUCTS_DATA,
   FETCH_PRODUCTS_DATA_SUCCESS,
   PRICE_RANGE_CHANGE,
+  SET_SHOPPING_CART_OPEN,
 } from "../../constants/cart";
 
 export interface AddProductAction {
@@ -55,6 +56,11 @@ export interface ChangePriceRangeAction {
   priceRange: ProductRange;
 }
 
+export interface CartOpenAction {
+  type: typeof SET_SHOPPING_CART_OPEN;
+  openCart: boolean;
+}
+
 export type CartActionTypes =
   | AddProductAction
   | RemoveProductAction
@@ -64,6 +70,7 @@ export type CartActionTypes =
   | FetchProductAction
   | FetchProductsSuccesAction
   | ChangePriceRangeAction
+  | CartOpenAction
   | ResetCartData;
 
 export interface CartStateItem {
@@ -82,4 +89,5 @@ export interface CartState {
   totalQuantity: number;
   products: Product[];
   productRange: ProductRange[];
+  isShoppingCartOpen: boolean;
 }

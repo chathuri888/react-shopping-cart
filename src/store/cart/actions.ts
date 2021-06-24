@@ -11,6 +11,7 @@ import {
   FETCH_PRODUCTS_DATA,
   FETCH_PRODUCTS_DATA_SUCCESS,
   PRICE_RANGE_CHANGE,
+  SET_SHOPPING_CART_OPEN,
 } from "../../constants/cart";
 
 export function addProduct(
@@ -74,5 +75,12 @@ export function changePriceRange(priceRange: ProductRange) {
   return {
     type: PRICE_RANGE_CHANGE,
     priceRange,
+  };
+}
+
+export function setOpenShoppingCart(openCart: boolean) {
+  return {
+    type: SET_SHOPPING_CART_OPEN,
+    openCart,
   };
 }

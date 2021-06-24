@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Table = styled.table`
   margin: 30px;
@@ -7,11 +7,11 @@ export const Table = styled.table`
   border-collapse: collapse;
   border: 1px solid #ccc;
   font-weight: 300;
-  
+
   td,
-  th {   
+  th {
     padding: 5px 10px;
-    border: 1px solid #ccc;    
+    border: 1px solid #ccc;
     background-color: #fabf37;
     color: #7b3e9a;
   }
@@ -21,7 +21,7 @@ export const Table = styled.table`
     text-align: center;
   }
 
-  th[scope='row'] {
+  th[scope="row"] {
     font-weight: 600;
     text-align: left;
   }
@@ -35,28 +35,24 @@ export const Table = styled.table`
       font-weight: normal;
     }
   }
-`
+`;
 
 export const Updating = styled.span`
   margin-left: 5px;
   font-weight: 300;
   font-size: 0.9rem;
-`
-
-export const Button = styled.button`
-  padding: 5px 15px;
-`
+`;
 
 export const Loading = styled.span`
   font-size: 0.9rem;
   font-weight: 300;
   &:before {
-    content: 'Loading...';
+    content: "Loading...";
   }
-`
+`;
 
 export const Container = styled.section`
   display: flex;
   flex-wrap: wrap;
   margin: 30px 15px;
-`
+`;
